@@ -32,5 +32,4 @@ float coloredBitmap(int w, int h, char* unit) {
         return 0; 
     }
 }
-
    // YOUR CODE HERE - END

@@ -18,10 +18,10 @@ float video(int w, int h, int durationMovie, int durationCredits, int fps, char*
     int colorFrames = durationMovie * fps; // Nombre d'images pour la section couleur
     int bwFrames = durationCredits * fps; // Nombre d'images pour la section noir et blanc
 
-    // Taille totale de la vidéo en octets :
+    // Taille totale de la video en octets :
     float totalSize = (colorFrames * colorImageSize) + (bwFrames * bwImageSize);
 
-    // Conversion en fonction de l'unité demandée :
+    // Conversion en fonction de l'unite demandee :
     if (strcmp(unit, "bt") == 0) {
         totalSize *= 8; // Conversion en bt
     } else if (strcmp(unit, "ko") == 0) {

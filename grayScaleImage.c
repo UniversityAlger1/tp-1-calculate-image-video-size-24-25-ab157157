@@ -8,5 +8,5 @@ float grayScaleImage(int w, int h) {
    // YOUR CODE HERE - BEGIN
    float T = w * h ;
    return (T); 
-   // YOUR CODE HERE - END
 }
+   // YOUR CODE HERE - END

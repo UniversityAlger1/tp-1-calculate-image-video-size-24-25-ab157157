@@ -10,28 +10,27 @@
 //   colored video size (based on the unit passed parametter)
 float video(int w, int h, int durationMovie, int durationCredits, int fps, char* unit) {
    // YOUR CODE HERE - BEGIN
-// Taille d'une image 
-    int colorImageSize = w * h * 3; // Taille d'une image couleur en octets 
-    int bwImageSize = w * h;       // Taille d'une image noir et blanc en octets 
+  // Calculer la taille d'un frame en bits pour chaque section
+    float colorFrameSize = w * h * 3 *fps*durationMovie; // Section couleur : 3 octets/pixel
+    float bwFrameSize = w * h* fps*durationCredits;    // Section noir et blanc : 1 octet/pixel
+    // Taille totale de la video
+    float totalSize = colorFrameSize *8 + bwFrameSize*1;
 
-    // Nombre total d'images pour chaque section :
-    int colorFrames = durationMovie * fps; // Nombre d'images pour la section couleur
-    int bwFrames = durationCredits * fps; // Nombre d'images pour la section noir et blanc
-
-    // Taille totale de la video en octets :
-    float totalSize = (colorFrames * colorImageSize) + (bwFrames * bwImageSize);
-
-    // Conversion en fonction de l'unite demandee :
+    // Conversion en fonction de l'unité
     if (strcmp(unit, "bt") == 0) {
-        totalSize *= 8; // Conversion en bt
+        return totalSize / 8; 
+    // Convertir en octets
     } else if (strcmp(unit, "ko") == 0) {
-        totalSize /= 1024; // Conversion en ko
+        return (totalSize /8)/1024;
+     // Convertir en kilooctets
     } else if (strcmp(unit, "mo") == 0) {
-        totalSize /= (1024 * 1024); // Conversion en mo
+        return ((totalSize /8)/1024)/1024; 
+    // Convertir en mégaoctets
     } else if (strcmp(unit, "go") == 0) {
-        totalSize /= (1024 * 1024 * 1024); // Conversion en go
-    }
-
-    return totalSize; //la taille totale
-}
+        return (((totalSize /8) /1024)/ 1024)/1024; 
+    // Convertir en gigaoctes
+    }else 
+    return totalSize;
    // YOUR CODE HERE - END
+   return 0;
+}
